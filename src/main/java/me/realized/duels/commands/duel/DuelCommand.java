@@ -58,12 +58,15 @@ public class DuelCommand extends BaseCommand {
             pm(sender, "&cYour inventory must be empty to use duel commands.");
             return;
         }
-
+        if(target.getWorld() != sender.getWorld() ){
+            pm(sender, "" + config.sameWorld() );
+            return;
+        }
         if (!wgHook.canUseDuelCommands(player)) {
            pm(sender, "&cYou must be in region '" + config.getDZRegion() + "' to use duel commands.");
            return;
         }
-
+          
         else if (args.length == 1) {
             Player target = Bukkit.getPlayerExact(args[0]);
 
@@ -104,6 +107,7 @@ public class DuelCommand extends BaseCommand {
                 player.openInventory(kitManager.getGUI().getFirst());
             } else {
                 requestManager.sendRequestTo(player, target, new Settings(target.getUniqueId()));
+                Helper.pm(config.getString("Dueling.same-world").replace("{PLAYER}", target.getName());
                 Helper.pm(config.getString("on-request-send").replace("{PLAYER}", target.getName()).replace("{ARENA}", "random"), player);
                 Helper.pm(config.getString("on-request-receive").replace("{PLAYER}", player.getName()).replace("{ARENA}", "random"), target);
 
