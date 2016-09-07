@@ -74,7 +74,7 @@ public class Config {
         this.arenaSelector = config.getInt("GUI.arena-selector", 2);
         this.availableArenaDisplayName = config.getString("GUI.available-arena-displayname", "&9{NAME}: &aAvailable");
         this.inUseArenaDisplayName = config.getString("GUI.in-use-arena-displayname", "&9{NAME}: &cIn Use");
-
+        this.sameWorld = config.getString("Dueling.same-world", "&cThe player {NAME} is not in the same world as you!")
         this.mecEnabled = config.getBoolean("Dueling.match-end-commands.enabled", false);
         this.mecCommands = config.isList("Dueling.match-end-commands.commands") ? config.getStringList("Dueling.match-end-commands.commands") : new ArrayList<String>();
         this.allowArenaSelecting = config.getBoolean("Dueling.allow-arena-selecting", true);
@@ -151,7 +151,6 @@ public class Config {
     public String getInUseArenaDisplayName() {
         return inUseArenaDisplayName;
     }
-
     public boolean isMECEnabled() {
         return mecEnabled;
     }
